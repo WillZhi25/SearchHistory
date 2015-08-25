@@ -7,7 +7,7 @@
 //
 
 #import "HistoryViewCell.h"
-
+CGFloat heightForCell = 35;
 @interface HistoryViewCell ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
@@ -17,7 +17,7 @@
 - (void)awakeFromNib {
     // Initialization code
     self.clipsToBounds = YES;
-    self.layer.cornerRadius = 35 / 2;
+    self.layer.cornerRadius = heightForCell / 2;
 }
 
 - (void)setKeyword:(NSString *)keyword {
@@ -28,6 +28,7 @@
 }
 
 - (CGSize)sizeForCell {
-    return CGSizeMake([_titleLabel sizeThatFits:CGSizeMake(MAXFLOAT, MAXFLOAT)].width + 30, 35);
+    //宽度加 heightForCell 为了两边圆角。
+    return CGSizeMake([_titleLabel sizeThatFits:CGSizeMake(MAXFLOAT, MAXFLOAT)].width + heightForCell, heightForCell);
 }
 @end
